@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block links %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/layouts_3.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+    <meta name="viewport" content="width=450, initial-scale=0.8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="background"></div>
+<header>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+            <div class="nav_bar">
+                <nav>
+                    <div class="nav_link">
+                        <a href="{% url 'news_list' %}">Новости</a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#">Федерация</a>
+                        <div class="accordion">
+                            <a href="{% url 'goals' %}">Цели и задачи</a>
+                            <a href="{% url 'leadership' %}">Руководство</a>
+                            <a href="{% url 'documents' %}">Документы</a>
+                            <a href="{% url 'protocols' %}">Протоколы</a>
+                        </div>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#">Турниры</a>
+                        <div class="accordion">
+                            <a href="{% url 'regulations' %}">Регламенты</a>
+                            <a href="{% url 'tournaments_list' %}">Отчеты</a>
+                            <a href="{% url 'results' %}">Результаты</a>
+                            <a href="{% url 'statistic' %}">Статистика</a>
+                            <a href="{% url 'students_tournaments' %}">Студенческие турниры</a>
+                            <a href="{% url 'payment' %}">Оплата</a>
+                        </div>
+                    </div>
+                    <div class="nav_link">
+                        <a href="{% url 'calendar' %}">Календарь</a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="{% url 'contacts' %}">Контакты</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="burger">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="footer_logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="logo">
+            </a>
+        </div>
+    </div>
+</footer>
+
+{% block scripts %}
+{% endblock %}
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

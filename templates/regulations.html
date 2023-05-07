@@ -1,0 +1,30 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/regulations.css' %}">
+{% endblock %}
+{% block title %}Регламенты{% endblock %}
+
+{% block content %}
+    <section class="section_regulations">
+        <div class="container">
+            <h1>Регламенты</h1>
+            <p>Внимание! Для участия в официальных турнирах федерации все спортсмены должны иметь стаховку (см. Общие
+                Положения)</p>
+            {% for regulation in regulations %}
+                <a href="{{ regulation.document.url }}" target="_blank">{{ regulation.name }}</a>
+            {% endfor %}
+            <h2>Архив</h2>
+            {% for year in years %}
+                {% if year.regulations.all %}
+                    {% for regulation in year.regulations.all %}
+                        {% if forloop.first %}
+                            <h3>{{ year }}</h3>
+                        {% endif %}
+                        <a href="{{ regulation.file.url }}" target="_blank">{{ regulation.name }}</a>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

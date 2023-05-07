@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 1170px;
+}
+
+html, body {
+    height: 100%;
+    font-family: unset;
+}
+
+body {
+    background-image: url("../img/bg4.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: title;
+    src: url("../fonts/Marck_Script/MarckScript-Regular.ttf");
+}
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+/* header
+ _____________________*/
+header {
+    position: relative;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    z-index: 3;
+    height: 100px;
+}
+
+.logo {
+    width: 200px;
+}
+
+.logo img {
+    width: 100px;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.burger {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.burger span {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: white;
+}
+
+.burger span:before {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 40px;
+    background-color: white;
+    bottom: 9px;
+}
+
+.burger span:after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 40px;
+    background-color: white;
+    bottom: -9px;
+}
+
+.nav_bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+}
+
+.nav_link {
+    position: relative;
+}
+
+.nav_link a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 25px 40px;
+    font-size: 21px;
+    height: 100%;
+    color: white;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.nav_link a:before {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 0;
+    top: 0;
+    left: 50%;
+    background: linear-gradient(to right, #e02727, #9538fa);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav_link a:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 50%;
+    background: linear-gradient(to right, #e02727, #9538fa);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav_link a:hover {
+    color: #f64b39;
+    transition: color 0.3s ease;
+}
+
+.nav_link a:hover:before, .nav_link a:hover:after {
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.accordion {
+    position: absolute;
+    display: none;
+    width: 100%;
+    top: 100%;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.accordion > a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 4;
+    font-size: 18px;
+}
+
+/*  footer
+ _________________________*/
+
+footer {
+    background: rgba(26, 48, 104, 0.7);
+}
+
+.footer_logo {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+
+    body {
+        background: none;
+
+    }
+
+    html {
+        min-width: unset;
+    }
+
+    .background {
+        position: fixed;
+        width: 100%;
+        min-height: 600px;
+        height: 120vh;
+        background: url(../img/bg4.jpg) center no-repeat;
+        background-size: cover;
+        z-index: -10;
+    }
+
+    nav {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        right: 0;
+        top: 70px;
+        background-color: rgba(0, 0, 0, 1);
+        height: unset;
+    }
+
+    .nav_link {
+        width: 225px;
+    }
+
+    .nav_link a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .accordion {
+        top: 0;
+        left: -225px;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .news_link {
+        width: 95%;
+    }
+}

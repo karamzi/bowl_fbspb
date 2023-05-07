@@ -1,0 +1,201 @@
+
+/* rating_section
+ ________________________*/
+
+.section_rating {
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+}
+
+.rating_title {
+    font-size: 45px;
+    color: white;
+    margin: 30px 0;
+}
+
+.rating_description {
+    font-size: 20px;
+    color: white;
+}
+
+.years_list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #009688;
+    margin-bottom: 20px;
+}
+
+.arrow-8 {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.arrow-8:before,
+.arrow-8:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid #009688;
+    border-bottom: 3px solid #009688;
+    animation: arrow-8 3s linear infinite;
+}
+
+.arrow-8:after {
+    animation: arrow-8 3s linear infinite -1.5s;
+}
+
+@keyframes arrow-8 {
+    0% {
+        opacity: 0;
+        transform: translate(0, -10px) rotate(-45deg);
+    }
+    10%, 90% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 10px) rotate(-45deg);
+    }
+}
+
+.years_list h3,.years_list a {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    margin: 20px 5px 10px 20px;
+    text-decoration: none;
+}
+
+.years_list h3:first-child, .years_list a:first-child {
+    margin-left: 0;
+}
+
+.years_list h3:hover, .years_list a:hover {
+    transition: color 0.3s ease;
+    color: #009688;
+}
+
+.rating_button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.rating_button a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 2px solid #009688;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.rating_button a:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px #eee;
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tournament_result {
+    overflow-x:auto;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 3px solid #009688;
+}
+
+.tournament_result::-webkit-scrollbar {
+	height: 12px;
+}
+.tournament_result::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px #009688;
+}
+.tournament_result::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 150, 136, 0.5);
+}
+
+.rating h4 {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tournament_result > table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.tournament_result thead {
+    color: white;
+}
+
+.tournament_result th {
+    padding: 10px 7px;
+    white-space: nowrap;
+}
+
+.tournament_result td {
+    border-bottom: solid 1px #ececec;
+    border-right: solid 1px #ececec;
+    text-align: center;
+    padding: 7px 7px;
+    white-space: nowrap;
+}
+
+.tournament_result tbody tr {
+    background-color: #fafafa;
+}
+
+.tournament_result tbody tr:nth-child(2n) {
+    background-color: #d5f3e8;
+}
+
+.tournament_result a {
+    text-decoration: none;
+    color: #009688;
+    font-size: 17px;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.tournament_result a:hover {
+    transition: color 0.3s ease;
+    color: #334065;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .rating_title, .rating_description, .years_list {
+        text-align: justify;
+    }
+}
+
+@media (max-width: 900px) {
+
+
+    .rating_description {
+        font-size: 15px;
+    }
+}

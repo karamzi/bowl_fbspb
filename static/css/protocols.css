@@ -1,0 +1,55 @@
+/* protocols section
+ ____________________*/
+
+.section_protocols {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section_protocols h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+.section_protocols p {
+    color: #ececec;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.section_protocols a {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    color: #03B1F7;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.section_protocols a:hover {
+    transition: color 0.3s ease;
+    color: #ececec;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .section_protocols h1 {
+        margin: 0 20px 40px;
+    }
+
+    .section_protocols p {
+        margin: 0 20px 15px;
+        font-size: 15px;
+    }
+
+    .section_protocols a {
+        padding: 0 20px 15px;
+        line-height: 1.5;
+        width: 100%;
+    }
+}

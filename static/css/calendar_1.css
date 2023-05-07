@@ -1,0 +1,109 @@
+/* calendar section
+ ____________________*/
+
+.calendar_section {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.calendar_section .container {
+    max-width: 650px;
+    padding: 0 10px;
+}
+
+.calendar_title {
+    position: relative;
+    width: 100%;
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.calendar_table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.calendar_table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar_table thead {
+    color: white;
+    background-color: #334065;
+}
+
+.calendar_table th {
+    padding: 12px 0;
+}
+
+.calendar_table td {
+    background-color: #fafafa;
+    border-bottom: solid 1px #ececec;
+    border-right: solid 1px #ececec;
+    text-align: center;
+    padding: 7px 0;
+}
+
+.document {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.document img {
+    margin-right: 10px;
+}
+
+.document a {
+    text-decoration: none;
+    color: #0093E9;
+    font-size: 25px;
+}
+
+.document a:hover {
+    transition: color 0.3s ease;
+    color: #f64b39;
+}
+
+.ant-alert-with-description.ant-alert-no-icon {
+    margin-bottom: 20px;
+}
+
+.ant-picker-cell .ant-picker-cell-inner {
+    min-width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .calendar_title {
+        margin: 0 20px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .calendar_table {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        width: 97%;
+    }
+
+    .calendar_table table {
+        min-width: 900px;
+        font-size: 15px;
+    }
+}

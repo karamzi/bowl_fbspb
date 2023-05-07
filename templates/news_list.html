@@ -1,0 +1,68 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/news_list_3.css' %}">
+{% endblock %}
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+    <section class="news_list_section">
+        <div class="container">
+            <div class="news_title">Новости и события</div>
+            <div class="news_cards">
+                {% for post in news %}
+                    <figure class="baha1493">
+                        <div {% if not post.news_image %}style="align-items: center;"{% endif %}
+                             class="image">
+                            {% if post.news_image %}
+                                <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
+                            {% else %}
+                                <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
+                            {% endif %}
+                        </div>
+                        <figcaption>
+                            <div class="date">
+                                <span class="day">{{ post.date|date:'j' }}</span>
+                                <span class="month_news">{{ post.date|date:'M' }}</span>
+                            </div>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.short_description }}</p>
+                            <div class="news_footer">
+                                <div class="views"><i class="ion-eye"></i>{{ post.count }}</div>
+                                {#                            <div class="comments"><i class="ion-chatboxes"></i>23</div>#}
+                            </div>
+                        </figcaption>
+                        <a href="{% url 'current_news' pk=post.pk %}"></a>
+                    </figure>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                <ul class="pagination">
+                    {% if previous_page_number %}
+                        <li><a href="{% url 'news_list' %}?page={{ previous_page_number }}">«</a></li>
+                    {% endif %}
+                    {% if previous2 in page_range %}
+                        <li><a href="{% url 'news_list' %}?page={{ previous2 }}">{{ previous2 }}</a></li>
+                    {% endif %}
+                    {% if previous_page_number %}
+                        <li>
+                            <a href="{% url 'news_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    <li><a class="active" href="#">{{ page }}</a></li>
+                    {% if next_page_number %}
+                        <li><a href="{% url 'news_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    {% if next2 in page_range %}
+                        <li><a href="{% url 'news_list' %}?page={{ next2 }}">{{ next2 }}</a></li>
+                    {% endif %}
+                    {% if next_page_number %}
+                        <li><a href="{% url 'news_list' %}?page={{ next_page_number }}">»</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

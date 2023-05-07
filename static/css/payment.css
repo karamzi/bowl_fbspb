@@ -1,0 +1,72 @@
+.payment_section {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+}
+
+.payment_section h2 {
+    color: #afd3f4;
+    margin: 50px 0 30px;
+    font-size: 30px;
+}
+
+.payment_section p {
+    color: #ebebeb;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: justify;
+    font-style: italic;
+    font-family: "Lora", serif;
+}
+
+.qr_codes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.qr_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+}
+
+.qr_item img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+.payment_section h3 {
+    font-weight: bold;
+    font-size: 25px;
+    color: #ebebeb;
+    margin-bottom: 10px;
+}
+
+.document {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.document img {
+    margin-right: 10px;
+}
+
+.document a {
+    text-decoration: none;
+    color: #0093E9;
+    font-size: 25px;
+}
+
+.document a:hover {
+    transition: color 0.3s ease;
+    color: #f64b39;
+}

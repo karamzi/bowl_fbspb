@@ -1,0 +1,38 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+{% endblock %}
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+    <section class="contacts_section">
+        <div class="container">
+            <h1>Контакты</h1>
+            <div class="row">
+                <div class="item">
+                    <img src="{% static 'img/phone.png' %}" alt="phone">
+                    <p>+7-921-936-46-27</p>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/mail.png' %}" alt="mail">
+                    <p>fbspb.reg@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <a href="https://www.youtube.com/channel/UCJFdDmkmpM81jgTCgCDGUwQ" target="_blank" class="item_link">
+                    <img src="{% static 'img/youTube.png' %}" alt="youTube">
+                    <p>YouTube</p>
+                </a>
+                <a href="https://vk.com/fbpiter" target="_blank" class="item_link">
+                    <img src="{% static 'img/vk.png' %}" alt="vk">
+                    <p>Группа ВК</p>
+                </a>
+                <a href="https://vk.com/bowling_student" target="_blank" class="item_link">
+                    <img src="{% static 'img/vk.png' %}" alt="vk">
+                    <p>Студенческая лига</p>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

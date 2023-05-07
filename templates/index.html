@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style_9.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts_3.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+    <meta name="viewport" content="width=450, initial-scale=0.8">
+    <title>Федерация Боулинга Санкт-Петербурга</title>
+</head>
+<body>
+<div class="background"></div>
+<header>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+            <div class="nav_bar">
+                <nav>
+                    <div class="nav_link">
+                        <a href="{% url 'news_list' %}">Новости</a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#">Федерация</a>
+                        <div class="accordion">
+                            <a href="{% url 'goals' %}">Цели и задачи</a>
+                            <a href="{% url 'leadership' %}">Руководство</a>
+                            <a href="{% url 'documents' %}">Документы</a>
+                            <a href="{% url 'protocols' %}">Протоколы</a>
+                        </div>
+                    </div>
+                    <div class="nav_link">
+                        <a href="#">Турниры</a>
+                        <div class="accordion">
+                            <a href="{% url 'regulations' %}">Регламенты</a>
+                            <a href="{% url 'tournaments_list' %}">Отчеты</a>
+                            <a href="{% url 'results' %}">Результаты</a>
+                            <a href="{% url 'statistic' %}">Статистика</a>
+                            <a href="{% url 'students_tournaments' %}">Студенческие турниры</a>
+                            <a href="{% url 'payment' %}">Оплата</a>
+                        </div>
+                    </div>
+                    <div class="nav_link">
+                        <a href="{% url 'calendar' %}">Календарь</a>
+                    </div>
+                    <div class="nav_link">
+                        <a href="{% url 'contacts' %}">Контакты</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="burger">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Федерация Боулинга<br>Санкт-Петербурга</h1>
+        <video id="video" autoplay="autoplay" muted="muted" loop>
+            <source src="http://90.156.129.4/static/video/out/master.m3u8" type="application/x-mpegurl">
+        </video>
+    </div>
+    <div class="social">
+        <a href="https://vk.com/fbpiter" target="_blank">
+            <img src="{% static 'img/vk.png' %}" alt="vk">
+        </a>
+        <a href="https://www.youtube.com/channel/UCJFdDmkmpM81jgTCgCDGUwQ" target="_blank">
+            <img src="{% static 'img/youTube.png' %}" alt="youtube">
+        </a>
+    </div>
+    <div class="angel">
+        <img src="{% static 'img/bottom_angle.png' %}" alt="decoration">
+    </div>
+</header>
+
+<section class="news_section">
+    <div class="container">
+        <div class="news_title">Последние новости</div>
+        <div class="news_cards">
+            {% for post in news %}
+                <figure class="baha1493">
+                    <div {% if not post.news_image %}style="align-items: center;"{% endif %}
+                         class="image">
+                        {% if post.news_image %}
+                            <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
+                        {% else %}
+                            <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <figcaption>
+                        <div class="date">
+                            <span class="day">{{ post.date|date:'j' }}</span>
+                            <span class="month_news">{{ post.date|date:'M' }}</span>
+                        </div>
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.short_description }}</p>
+                        <div class="news_footer">
+                            <div class="views"><i class="ion-eye"></i>{{ post.count }}</div>
+                        </div>
+                    </figcaption>
+                    <a href="{% url 'current_news' pk=post.pk %}"></a>
+                </figure>
+            {% endfor %}
+        </div>
+        <div class="news_button">
+            <a href="{% url 'news_list' %}">Все новости</a>
+        </div>
+    </div>
+</section>
+
+<a name="calendar"></a>
+<section class="calendar_section">
+    <div class="container">
+        <div class="calendar_block">
+            <div class="calendar_title">Календарь соревнований</div>
+            <div class="calendar_month">
+                <p class="month" href="#">{{ current_month }}</p>
+                <div class="arrow-8"></div>
+                <div style="display: none" class="month_list">
+                    {% for month in month_list %}
+                        <a href="{% url 'index' %}?month={{ forloop.counter }}#calendar">{{ month }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="calendar_table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Соревнование</th>
+                        <th>Город</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Положение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if not is_tournament and nearest_tournament %}
+                        <tr style="background-color: #caf6f0;">
+                            <td>*</td>
+                            <td>{{ nearest_tournament.competition }}</td>
+                            <td>{{ nearest_tournament.city }}</td>
+                            <td>{{ nearest_tournament.date_start|date:'d.m' }}</td>
+                            <td>{{ nearest_tournament.date_finish|date:'d.m' }}</td>
+                            <td>
+                                {% if nearest_tournament.regulation %}
+                                    <a href="{{ nearest_tournament.regulation.document.url }}"><img
+                                            src="{% static 'img/file_icon.png' %}"
+                                            alt="rules"></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% for event in calendar %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ event.competition }}</td>
+                            <td>{{ event.city }}</td>
+                            <td>{{ event.date_start|date:'d.m' }}</td>
+                            <td>{{ event.date_finish|date:'d.m' }}</td>
+                            <td>
+                                {% if event.regulation %}
+                                    <a href="{{ event.regulation.document.url }}"><img
+                                            src="{% static 'img/file_icon.png' %}"
+                                            alt="rules"></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="calendar_button">
+                <a href="{% url 'calendar' %}">Весь календарь</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rating_section">
+    <div class="container">
+        <div class="rating_title">Рейтинг спортсменов</div>
+        <div class="rating_tables">
+            <div class="rating_man">
+                <h3>Мужчины</h3>
+                <table>
+                    <thead>
+                    <tr style="background-color: #009688;">
+                        <th>Место</th>
+                        <th>Разряд</th>
+                        <th>Спортсмен</th>
+                        <th>Очки</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for player in man %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ player.rang }}</td>
+                            <td><a href="{% url 'profile' pk=player.pk %}">{{ player.name }}</a></td>
+                            <td>{{ player.total_rating }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="rating_women">
+                <h3>Женщины</h3>
+                <table>
+                    <thead>
+                    <tr style="background-color: #009688;">
+                        <th>Место</th>
+                        <th>Разряд</th>
+                        <th>Спортсмен</th>
+                        <th>Очки</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for player in woman %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ player.rang }}</td>
+                            <td><a href="{% url 'profile' pk=player.pk %}">{{ player.name }}</a></td>
+                            <td>{{ player.total_rating }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="rating_button">
+            <a href="{% url 'rating' %}">Весь рейтинг</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer_logo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="logo">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://hlsbook.net/wp-content/examples/hls.min.js"></script>
+<script>
+    if (Hls.isSupported()) {
+        let video = document.getElementById('video')
+        let hls = new Hls()
+        hls.loadSource('https://xn--90aa5bhn.xn--p1ai/static/video/out/master.m3u8')
+        hls.attachMedia(video)
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
+    }
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

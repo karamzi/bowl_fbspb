@@ -1,0 +1,77 @@
+
+/* regulations section
+ ____________________*/
+
+.section_regulations {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section_regulations h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+.section_regulations h2 {
+    color: #ececec;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.section_regulations h3 {
+    color: #ececec;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.section_regulations p {
+    color: #e02771;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.section_regulations a {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    color: #03B1F7;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.section_regulations a:hover {
+    transition: color 0.3s ease;
+    color: #ececec;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .section_regulations h1 {
+        margin: 0 20px 40px;
+    }
+
+    .section_regulations a {
+        padding: 0 20px 15px;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+    .section_regulations p {
+        margin: 0 20px 15px;
+        text-align: justify;
+    }
+
+    .section_regulations h2 {
+        margin: 0 20px 15px;
+    }
+
+    .section_regulations h3 {
+        margin: 0 20px 15px;
+    }
+}

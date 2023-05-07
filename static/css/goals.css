@@ -1,0 +1,66 @@
+
+/* goals section
+ ____________________*/
+
+.goals_section {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.goals_section h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+
+}
+
+.goals_section p {
+    color: #ececec;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.goals_section ul {
+    margin-left: 50px;
+    color: #ececec;
+    font-size: 20px;
+}
+
+.goals_section ul li {
+    margin-bottom: 10px;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .goals_section h1 {
+        margin: 0 20px 40px;
+    }
+
+    .goals_section p {
+        margin: 0 20px 20px;
+    }
+
+    ul {
+        margin: 0 40px 0 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .goals_section h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .goals_section p {
+        font-size: 15px;
+    }
+
+    ul li {
+        font-size: 15px;
+        text-align: justify;
+    }
+}

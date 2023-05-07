@@ -1,0 +1,30 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/documents.css' %}">
+{% endblock %}
+{% block title %}Документы Федерации{% endblock %}
+
+{% block content %}
+    <section class="section_documents">
+        <div class="container">
+            <h1>Документы</h1>
+            <h2>Уставные</h2>
+            <a href="{% static 'documents/fbspb.pdf' %}" target="_blank">Устав РОО "Федерация Боулинга
+                Санкт-Петербурга"</a>
+            <a href="{% static 'documents/acreditaciy_fbspb_2019.pdf' %}" target="_blank">Аккредитация региональной
+                спортивной федерации</a>
+            <a target="_blank" href="{% static 'documents/Spisok_chlenov_ROO_FB_SPb_190321.pdf' %}">Реестр членов РОО ФБ
+                СПб</a>
+            <h2>Положения</h2>
+            <a href="{% static 'documents/polosinie_o_formirovanee_sbornoy.pdf' %}">Положение о формировании сборной</a>
+            <h2>COVID-19</h2>
+            <a href="{% static 'documents/standart.pdf' %}" target="_blank">Стандарт безопасной деятельности при
+                проведении городских соревнований по боулингу</a>
+            <a href="{% static 'documents/qr-covid-19.pdf' %}" target="_blank">QR</a>
+            <h2>Присвоения</h2>
+            <a href="{% static 'documents/prikaz_274.pdf' %}" target="_blank">О присвоение спортивных разрядов №274</a>
+            <a href="{% static 'documents/prikaz_273.pdf' %}" target="_blank">О присвоение спортивных разрядов №273</a>
+        </div>
+    </section>
+{% endblock %}

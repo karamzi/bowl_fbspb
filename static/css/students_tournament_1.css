@@ -1,0 +1,60 @@
+
+/* students_tournament_section
+ ________________________*/
+
+.students_tournament_section {
+    flex-grow: 1;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.students_tournament_section h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+
+}
+
+.students_tournament_section h2 {
+    color: #009688;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.students_tournament_section h3 {
+    color: #e02771;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.students_tournament_section p {
+    color: #ececec;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: justify;
+    line-height: 1.3;
+}
+
+.students_tournament_section a {
+    text-decoration: none;
+    color: #03B1F7;
+}
+
+.students_tournament_section a:hover {
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.students_tournament_section img {
+    max-width: 700px;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 900px) {
+    .students_tournament_section img {
+        max-width: 400px;
+    }
+}

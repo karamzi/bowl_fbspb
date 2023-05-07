@@ -1,0 +1,38 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/results_2.css' %}">
+{% endblock %}
+{% block title %}Результаты{% endblock %}
+
+{% block content %}
+    <div class="section_results">
+        <div class="container">
+            <h1>Результаты</h1>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Соревнование</th>
+                        <th>Дата окончания</th>
+                        <th>Вид</th>
+                        <th>Результаты PDF</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td style="text-align: left; padding-left: 10px">{{ result.tournament_name }}</td>
+                        <td>{{ result.date|date:'d.m.Y' }}</td>
+                        <td>{{ result.format }}</td>
+                        <td>{% if result.results %}<a href="{{ result.results.url }}" target="_blank">Открыть</a>{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

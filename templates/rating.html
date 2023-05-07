@@ -1,0 +1,79 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/statistics_3.css' %}">
+{% endblock %}
+{% block title %}Рейтинг{% endblock %}
+
+{% block content %}
+    <section class="section_rating">
+        <div class="container">
+            <div class="rating_title">Рейтинг</div>
+            <div class="rating_description">Рейтинг ведется на основе рейтинговых турниров проводимых федерацией
+                согласно
+                общим положениям. Результаты рейтинга используются для формирования сборной команды Санкт-Петербурга на
+                следующий календарный год
+            </div>
+            <div class="rating_by_years">
+                <div class="years">
+                    <div class="years_list">
+                        {% for year in years %}
+                            <a class="year" href="{% url 'rating' %}?year={{ year }}">{{ year }}</a>
+                            <div class="arrow-8"></div>
+                        {% endfor %}
+                    </div>
+                    <div class="rating">
+                        {#                        <div class="rating_button">#}
+                        {#                            {% if year.rating %}#}
+                        {#                                <a href="{{ year.rating.url }}" target="_blank">Весь рейтинг PDF</a>#}
+                        {#                            {% endif %}#}
+                        {#                        </div>#}
+                        <h4>Мужчины</h4>
+                        <div class="tournament_result">
+                            <table>
+                                <thead>
+                                <tr style="background-color: #009688;">
+                                    <th>№</th>
+                                    {% for column in columns %}
+                                        <th style="white-space: unset">{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                {% for row in man %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        {% for item in row %}
+                                            <td>{{ item }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                        <h4>Женщины</h4>
+                        <div class="tournament_result">
+                            <table>
+                                <thead>
+                                <tr style="background-color: #009688;">
+                                    <th>№</th>
+                                    {% for column in columns %}
+                                        <th style="white-space: unset">{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                {% for row in woman %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        {% for item in row %}
+                                            <td>{{ item }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

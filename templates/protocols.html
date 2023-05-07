@@ -1,0 +1,19 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/protocols.css' %}">
+{% endblock %}
+{% block title %}Протоколы{% endblock %}
+
+{% block content %}
+    <section class="section_protocols">
+        <div class="container">
+            <h1>Протоколы</h1>
+            <p>2021</p>
+            <a href="#">Протокол Президиума ФБ СПб 20.01.2020</a>
+            <p>2020</p>
+            <a href="#">Протокол Президиума ФБ СПб 19.03.2020</a>
+            <a href="#">Протокол Президиума ФБ СПб 05.09.2020</a>
+        </div>
+    </section>
+{% endblock %}

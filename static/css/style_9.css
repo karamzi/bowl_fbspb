@@ -1,0 +1,658 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+/* main section
+ __________________*/
+
+.main_section {
+    position: relative;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: calc(100vh - 100px);
+}
+
+.main:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(26, 48, 104, 0.7);
+    z-index: 1;
+}
+
+.main h1 {
+    font-family: title;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+
+video {
+    -o-object-fit: cover;
+    object-fit: fill;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.social {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    left: 10%;
+    bottom: 60px;
+}
+
+.social img {
+    width: 40px;
+    margin-right: 25px;
+}
+
+.angel {
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    z-index: 1;
+}
+
+.angel img {
+    width: 700px;
+}
+
+/* news
+====================*/
+
+.news_title {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.news_title:after {
+    content: '';
+    display: block;
+    width: 200px;
+    margin: 25px auto 0;
+    border-top: 2px solid white;
+}
+
+.news_cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.baha1493 {
+    font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 290px;
+    max-width: 290px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px #d2652d;
+}
+
+.baha1493 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.baha1493:after {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 0 25px 25px;
+    border-color: transparent transparent transparent #d2652d;
+    content: '';
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.baha1493 .image {
+    height: 170px;
+    overflow: hidden;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(26, 48, 104, 0.9);
+}
+
+.baha1493 img {
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.baha1493 figcaption {
+    padding: 15px 15px 25px;
+    background-color: #ffffff;
+}
+
+.baha1493 .date {
+    background-color: #d2652d;
+    top: 15px;
+    color: #fff;
+    right: 15px;
+    min-height: 48px;
+    min-width: 48px;
+    position: absolute;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 50%;
+    padding: 10px 0;
+}
+
+.baha1493 .date span {
+    display: block;
+    line-height: 14px;
+}
+
+.baha1493 .date .month_news {
+    font-size: 11px;
+}
+
+.baha1493 h3,
+.baha1493 p {
+    margin: 0;
+    padding: 0;
+}
+
+.baha1493 h3 {
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.baha1493 p {
+    font-size: 0.8em;
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+.baha1493 .news_footer {
+    padding: 0 25px;
+    color: #999999;
+    font-size: 0.8em;
+    line-height: 50px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.baha1493 .news_footer > div {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.baha1493 .news_footer i {
+    margin-right: 5px;
+    font-size: 1.2em;
+}
+
+.baha1493 a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.baha1493:hover:after,
+.baha1493.hover:after {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+.news_button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.news_button a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 2px solid #d2652d;
+    transition: all 0.3s ease;
+}
+
+.news_button a:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px #eee;
+}
+
+/* calendar section
+ ____________________*/
+.calendar_section {
+    position: relative;
+    padding: 40px 10px;
+}
+
+.calendar_section:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.calendar_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar_title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.calendar_title:after {
+    content: '';
+    display: block;
+    width: 200px;
+    margin: 25px auto 0;
+    border-top: 2px solid white;
+}
+
+.calendar_month {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.month {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 50px;
+    border: 2px solid #0093E9;
+    border-radius: 50px;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.month_list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 47px;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 1);
+    height: 210px;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.month_list > a {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 50px;
+}
+
+.month_list > a:hover {
+    color: #0093E9;
+}
+
+.arrow-8 {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    right: 35px;
+    top: -2px;
+    z-index: 3;
+}
+
+.arrow-8:before,
+.arrow-8:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid #009688;
+    border-bottom: 3px solid #009688;
+    animation: arrow-8 3s linear infinite;
+}
+
+.arrow-8:after {
+    animation: arrow-8 3s linear infinite -1.5s;
+}
+
+@keyframes arrow-8 {
+    0% {
+        opacity: 0;
+        transform: translate(0, -10px) rotate(-45deg);
+    }
+    10%, 90% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 10px) rotate(-45deg);
+    }
+}
+
+.calendar_table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar_table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+.calendar_table thead {
+    color: white;
+    background-color: #334065;
+}
+
+.calendar_table th {
+    padding: 12px 0;
+}
+
+.calendar_table tbody tr {
+    background-color: #fafafa;
+}
+
+.calendar_table td {
+    border-bottom: solid 1px #ececec;
+    border-right: solid 1px #ececec;
+    text-align: center;
+    padding: 7px 0;
+}
+
+.calendar_table h4 {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.calendar_button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.calendar_button a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 2px solid #0093E9;
+    transition: all 0.3s ease;
+}
+
+.calendar_button a:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px #eee;
+}
+
+
+/* rating section
+ ______________________________*/
+
+.rating_section {
+    position: relative;
+    padding: 40px 0;
+}
+
+.rating_section:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.rating_title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.rating_title:after {
+    content: '';
+    display: block;
+    width: 200px;
+    margin: 25px auto 0;
+    border-top: 2px solid white;
+}
+
+.rating_tables {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.rating_tables a {
+    text-decoration: none;
+    color: #009688;
+    font-size: 17px;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.rating_tables a:hover {
+    transition: color 0.3s ease;
+    color: #334065;
+}
+
+.rating_man, .rating_women {
+    width: 45%;
+}
+
+.rating_man h3, .rating_women h3 {
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.rating_tables table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rating_tables thead {
+    color: white;
+}
+
+.rating_tables th {
+    padding: 10px 0;
+}
+
+.rating_tables td {
+    background-color: #fafafa;
+    border-bottom: solid 1px #ececec;
+    border-right: solid 1px #ececec;
+    text-align: center;
+    padding: 7px 0;
+}
+
+.rating_button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.rating_button a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 2px solid #009688;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.rating_button a:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px #eee;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .main {
+        height: 450px;
+    }
+
+    video {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+    .calendar_table {
+        font-size: 14px;
+    }
+
+    .rating_tables {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rating_man, .rating_women {
+        width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .angel img {
+        width: 500px;
+    }
+
+    .calendar_table {
+        font-size: 12px;
+        justify-content: flex-start;
+        overflow-y: scroll;
+        width: 97%;
+        margin-bottom: 50px;
+    }
+
+    .calendar_table table {
+        min-width: 700px;
+    }
+
+    .rating_man, .rating_women {
+        width: 80%;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .main h1 {
+        font-size: 50px;
+    }
+
+    .news_head h2 {
+        font-size: 16px;
+    }
+
+    .rating_man, .rating_women {
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .news_link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .angel img {
+        width: 300px;
+    }
+
+    .news_link {
+        font-size: 12px;
+    }
+
+    .rating_man, .rating_women {
+        font-size: 12px;
+    }
+}

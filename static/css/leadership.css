@@ -1,0 +1,93 @@
+
+/* leadership section
+ ____________________*/
+
+.leadership_section {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.leadership_section h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+
+}
+
+.person_block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 700px;
+}
+
+.person h3 {
+    text-transform: uppercase;
+    color: #ececec;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.person p {
+    color: #009688;
+    font-size: 20px;
+}
+
+.phone {
+    text-align: right;
+    color: #ececec;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.email {
+    text-align: right;
+    color: #0093E9;
+    font-size: 20px;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .leadership_section h1 {
+        margin: 0 20px 40px;
+    }
+
+    .person_block {
+        margin: 0 20px 40px;
+    }
+}
+
+@media (max-width: 750px) {
+    .person_block {
+        flex-direction: column;
+        align-items: flex-start;
+        width: auto;
+    }
+
+    .person h3 {
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    .person {
+        margin-bottom: 5px;
+    }
+
+    .phone {
+        margin-bottom: 5px;
+    }
+
+    .email, .phone {
+        text-align: left;
+    }
+}
+
+@media (max-width: 500px) {
+    .person p {
+        font-size: 15px;
+    }
+}

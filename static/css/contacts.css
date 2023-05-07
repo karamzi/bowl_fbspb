@@ -1,0 +1,65 @@
+/* calendar section
+ ____________________*/
+
+.contacts_section {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.contacts_section h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item, .item_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    min-width: 100px;
+    margin-bottom: 60px;
+}
+
+.item img, .item_link img {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.item p, .item_link p {
+    color: #ececec;
+    font-size: 20px;
+    text-align: center;
+}
+
+.item_link p:hover {
+    color: #03B1F7;
+    transition: color 0.3s ease;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 850px) {
+    .row {
+        justify-content: space-around;
+    }
+
+    .item, .item_link {
+        width: 30%;
+    }
+}
+
+@media (max-width: 520px) {
+    .item, .item_link {
+        width: 50%;
+    }
+}

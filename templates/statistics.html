@@ -1,0 +1,104 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/statistics_3.css' %}">
+{% endblock %}
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+    <section class="section_rating">
+        <div class="container">
+            <div class="rating_title">Статистика</div>
+            <div class="rating_description">Рейтинг ведется на основе рейтинговых турниров проводимых федерацией
+                согласно
+                общим положениям. Результаты рейтинга используются для формирования сборной команды Санкт-Петербурга на
+                следующий календарный год
+            </div>
+            <div class="rating_by_years">
+                <div class="years">
+                    <div class="years_list">
+                        {% for year in years %}
+                            {% if year.men or year.women %}
+                                <h3 class="year" data-year="{{ year.year }}">{{ year.year }}</h3>
+                                <div class="arrow-8"></div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for year in years %}
+                        {% if year.men or year.women %}
+                            <div data-year="{{ year.year }}" class="rating">
+                                <h4>Мужчины</h4>
+                                <div class="tournament_result">
+                                    <table>
+                                        <thead>
+                                        <tr style="background-color: #009688;">
+                                            <th>Место</th>
+                                            <th>Фамилия, Имя</th>
+                                            <th>Звание, разряд</th>
+                                            <th>Кол-во игр</th>
+                                            <th>Худшая игра</th>
+                                            <th>Лучшая игра</th>
+                                            <th>Сумма кеглей</th>
+                                            <th>Средний</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for player in year.men %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>
+                                                    <a href="{% url 'profile' pk=player.player.id %}">{{ player.player.name }}</a>
+                                                </td>
+                                                <td>{{ player.player.rang }}</td>
+                                                <td>{{ player.games }}</td>
+                                                <td>{{ player.min }}</td>
+                                                <td>{{ player.max }}</td>
+                                                <td>{{ player.sum }}</td>
+                                                <td>{{ player.avg }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h4>Женщины</h4>
+                                <div class="tournament_result">
+                                    <table>
+                                        <thead>
+                                        <tr style="background-color: #009688;">
+                                            <th>Место</th>
+                                            <th>Фамилия, Имя</th>
+                                            <th>Звание, разряд</th>
+                                            <th>Кол-во игр</th>
+                                            <th>Худщая игра</th>
+                                            <th>Лучшая игра</th>
+                                            <th>Сумма кеглей</th>
+                                            <th>Средний</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for player in year.women %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>
+                                                    <a href="{% url 'profile' pk=player.player.id %}">{{ player.player.name }}</a>
+                                                </td>
+                                                <td>{{ player.player.rang }}</td>
+                                                <td>{{ player.games }}</td>
+                                                <td>{{ player.min }}</td>
+                                                <td>{{ player.max }}</td>
+                                                <td>{{ player.sum }}</td>
+                                                <td>{{ player.avg }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

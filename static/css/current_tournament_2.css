@@ -1,0 +1,107 @@
+
+/* current tournament
+______________________ */
+
+.tournament_section {
+    display: flex;
+    flex-grow: 1;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.tournament_section h2 {
+    color: #afd3f4;
+    margin: 50px 0 30px;
+    font-size: 30px;
+}
+
+.description {
+    color: #ebebeb;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.description p {
+    font-size: 18px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-align: justify;
+    font-style: italic;
+    font-family: "Lora", serif;
+}
+
+.description a {
+    text-decoration: none;
+    color: #0093E9;
+}
+
+.description a:hover {
+    transition: color 0.3s ease;
+    color: #03B1F7;
+}
+
+.description img {
+    max-width: 50% !important;
+    height: unset !important;
+}
+
+.description ul li {
+    margin-left: 30px;
+    margin-bottom: 3px;
+}
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.photos img {
+    box-shadow: 0 0 25px 2px rgba(34, 60, 80, .8);
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.photos img:last-child {
+    margin-right: 0;
+}
+
+.document {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.document img {
+    margin-right: 10px;
+}
+
+.document a {
+    text-decoration: none;
+    color: #0093E9;
+    font-size: 25px;
+}
+
+.document a:hover {
+    transition: color 0.3s ease;
+    color: #f64b39;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 500px) {
+    .photos {
+        flex-direction: column;
+    }
+
+    .photos img {
+        margin: 0 0 20px;
+    }
+
+    .description img {
+        width: 90% !important;
+    }
+}

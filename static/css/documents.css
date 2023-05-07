@@ -1,0 +1,55 @@
+
+/* documents section
+ ____________________*/
+
+.section_documents {
+    flex-grow: 1;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section_documents h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 40px;
+}
+
+.section_documents h2 {
+    color: #ececec;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.section_documents a {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    color: #03B1F7;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.section_documents a:hover {
+    transition: color 0.3s ease;
+    color: #ececec;
+}
+
+/* media query
+ _________________________*/
+
+@media (max-width: 990px) {
+    .section_documents h1 {
+        margin: 0 20px 40px;
+    }
+
+    .section_documents h2 {
+        margin: 0 20px 20px;
+    }
+
+    .section_documents a {
+        padding: 0 20px 15px;
+        line-height: 1.5;
+        width: 100%;
+    }
+}
