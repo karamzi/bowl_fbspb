@@ -2,4 +2,7 @@
 venv/*
 media/*
 main/migrations/*
-*/__pycache__/*
+main/__pycache__/*
+fbspb/__pycache__/*
+main/migrations/__pycache__/*
+main/services/__pycache__/*
