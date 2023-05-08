@@ -35,7 +35,7 @@
                         <a href="#">Турниры</a>
                         <div class="accordion">
                             <a href="{% url 'regulations' %}">Регламенты</a>
-                            <a href="{% url 'tournaments_list' %}">Отчеты</a>
+                            <a href="{% url 'reports_list' %}">Отчеты</a>
                             <a href="{% url 'results' %}">Результаты</a>
                             <a href="{% url 'statistic' %}">Статистика</a>
                             <a href="{% url 'students_tournaments' %}">Студенческие турниры</a>
@@ -93,7 +93,7 @@
                             <span class="day">{{ post.date|date:'j' }}</span>
                             <span class="month_news">{{ post.date|date:'M' }}</span>
                         </div>
-                        <h3>{{ post.title }}</h3>
+                        <h3>{{ post.name }}</h3>
                         <p>{{ post.short_description }}</p>
                         <div class="news_footer">
                             <div class="views"><i class="ion-eye"></i>{{ post.count }}</div>

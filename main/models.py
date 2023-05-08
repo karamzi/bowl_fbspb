@@ -11,7 +11,7 @@ def get_document_path(instance, filename):
 
 
 def get_image_path(instance, filename):
-    return f'images/{instance.title}_{instance.pk}.{splitext(filename)[1]}'
+    return f'images/{instance.name}_{instance.pk}{splitext(filename)[1]}'
 
 
 # Create your models here.
@@ -114,7 +114,7 @@ class CalendarModel(models.Model):
 
 
 class NewsModel(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Навзание новости')
+    name = models.CharField(max_length=100, verbose_name='Навзание новости')
     short_description = models.CharField(max_length=100, verbose_name='Короткое описание')
     description = models.TextField(verbose_name='Описание')
     result = models.ForeignKey(ResultsModel, on_delete=models.PROTECT, verbose_name='Результаты', blank=True, null=True)
@@ -128,18 +128,46 @@ class NewsModel(models.Model):
         ordering = ['-date']
 
 
+class ReportsModel(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Название Турнира')
+    short_description = models.TextField(max_length=255, verbose_name='Короткое описание')
+    description = models.TextField(verbose_name='Описание')
+    date = models.DateField(verbose_name='Дата')
+    regulation = models.ForeignKey(DocumentModel, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
+                                   blank=True)
+    tournament_results = models.ForeignKey(ResultsModel, verbose_name='Результаты', on_delete=models.CASCADE, null=True,
+                                           blank=True)
+    report_image = models.ImageField(verbose_name='Изображение новости', upload_to=get_image_path, null=True,
+                                     blank=True)
+    count = models.IntegerField(default=0, verbose_name='Просмотры')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Отчет'
+        verbose_name_plural = 'Отчеты по прощедщим турнирам'
+        ordering = ['-date']
+
+
+class NewsDocumentsModel(models.Model):
+    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_documents',
+                             blank=True, null=True)
+    report = models.ForeignKey(ReportsModel, on_delete=models.PROTECT, verbose_name='Отчет',
+                               related_name='report_documents', blank=True, null=True)
+    name = models.CharField(max_length=100, verbose_name='Название документа')
+    document = models.FileField(upload_to=get_document_path, verbose_name='Документ')
+
+
 class ImagesModel(models.Model):
-    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_images')
-    title = models.CharField(max_length=100, verbose_name='Название изображения')
+    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_images',
+                             blank=True, null=True)
+    report = models.ForeignKey(ReportsModel, on_delete=models.PROTECT, verbose_name='Отчет',
+                               related_name='report_images', blank=True, null=True)
+    name = models.CharField(max_length=100, verbose_name='Название изображения')
     image = models.ImageField(upload_to=get_image_path, verbose_name='Изображение')
     width = models.IntegerField(null=True, blank=True, verbose_name='Ширина')
     height = models.IntegerField(null=True, blank=True, verbose_name='Высота')
-
-
-class NewsDocuments(models.Model):
-    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_documents')
-    name = models.CharField(max_length=100, verbose_name='Название документа')
-    document = models.FileField(upload_to=get_document_path, verbose_name='Документ')
 
 
 class TournamentsAbstractModel(models.Model):

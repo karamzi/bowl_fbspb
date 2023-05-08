@@ -1,23 +1,23 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/news_list_3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tournament_list_1.css' %}">
 {% endblock %}
-{% block title %}Новости{% endblock %}
+{% block title %}Отчеты по турнирам{% endblock %}
 
 {% block content %}
-    <section class="news_list_section">
+    <section class="tournament_list_section">
         <div class="container">
-            <div class="news_title">Новости и события</div>
-            <div class="news_cards">
-                {% for post in news %}
+            <div class="tournament_title">Отчеты</div>
+            <div class="tournament_list">
+                {% for post in reports %}
                     <figure class="baha1493">
-                        <div {% if not post.news_image %}style="align-items: center;"{% endif %}
+                        <div {% if not post.news_image %}style="align-items: center; background-color: rgba(26, 48, 104, 0.9)"{% endif %}
                              class="image">
-                            {% if post.news_image %}
-                                <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
+                            {% if post.report_image %}
+                                <img src="{{ post.report_image.url }}" alt="ls-sample1"/>
                             {% else %}
-                                <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
+                                <img width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
                             {% endif %}
                         </div>
                         <figcaption>
@@ -31,37 +31,39 @@
                                 <div class="views"><i class="ion-eye"></i>{{ post.count }}</div>
                             </div>
                         </figcaption>
-                        <a href="{% url 'current_news' pk=post.pk %}"></a>
+                        <a href="{% url 'current_report' pk=post.pk %}"></a>
                     </figure>
                 {% endfor %}
             </div>
             <div class="pagination">
                 <ul class="pagination">
                     {% if previous_page_number %}
-                        <li><a href="{% url 'news_list' %}?page={{ previous_page_number }}">«</a></li>
+                        <li><a href="{% url 'reports_list' %}?page={{ previous_page_number }}">«</a>
+                        </li>
                     {% endif %}
                     {% if previous2 in page_range %}
-                        <li><a href="{% url 'news_list' %}?page={{ previous2 }}">{{ previous2 }}</a></li>
+                        <li><a href="{% url 'reports_list' %}?page={{ previous2 }}">{{ previous2 }}</a>
+                        </li>
                     {% endif %}
                     {% if previous_page_number %}
                         <li>
-                            <a href="{% url 'news_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
+                            <a href="{% url 'reports_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
                         </li>
                     {% endif %}
                     <li><a class="active" href="#">{{ page }}</a></li>
                     {% if next_page_number %}
-                        <li><a href="{% url 'news_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
+                        <li>
+                            <a href="{% url 'reports_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
                         </li>
                     {% endif %}
                     {% if next2 in page_range %}
-                        <li><a href="{% url 'news_list' %}?page={{ next2 }}">{{ next2 }}</a></li>
+                        <li><a href="{% url 'reports_list' %}?page={{ next2 }}">{{ next2 }}</a></li>
                     {% endif %}
                     {% if next_page_number %}
-                        <li><a href="{% url 'news_list' %}?page={{ next_page_number }}">»</a></li>
+                        <li><a href="{% url 'reports_list' %}?page={{ next_page_number }}">»</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </section>
 {% endblock %}
-

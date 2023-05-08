@@ -1,6 +1,5 @@
 // Get the modal
 const modal = document.getElementById("myModal")
-console.log('re')
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 const images = document.querySelectorAll('.myImage')
