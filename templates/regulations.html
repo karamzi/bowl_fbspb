@@ -21,7 +21,7 @@
                         {% if forloop.first %}
                             <h3>{{ year }}</h3>
                         {% endif %}
-                        <a href="{{ regulation.file.url }}" target="_blank">{{ regulation.name }}</a>
+                        <a href="{{ regulation.document.url }}" target="_blank">{{ regulation.name }}</a>
                     {% endfor %}
                 {% endif %}
             {% endfor %}

@@ -33,11 +33,11 @@
                 {% endfor %}
             {% endif %}
             {% if news.result %}
-                {% if news.results.results.file %}
+                {% if news.result.results.url %}
                     <div class="document">
                         <img src="{% static 'img/pdf_icon.png' %}" alt="">
-                        <a href="{{ news.results.results.url }}"
-                           target="_blank">{{ news.results.tournament_name }} PDF</a>
+                        <a href="{{ news.result.results.url }}"
+                           target="_blank">{{ news.result.tournament_name }} PDF</a>
                     </div>
                 {% endif %}
             {% endif %}

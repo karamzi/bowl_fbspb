@@ -1,17 +1,18 @@
 from django.db import models
 from os.path import splitext
+import datetime
 
 
 def get_result_path(instance, filename):
-    return f'results/{instance.year.year}/{instance.tournament_name}_{instance.pk}.{splitext(filename)[1]}'
+    return f'results/{instance.year.year}/{instance.tournament_name}_{datetime.datetime.now()}{splitext(filename)[1]}'
 
 
 def get_document_path(instance, filename):
-    return f'documents/{instance.name}_{instance.pk}.{splitext(filename)[1]}'
+    return f'documents/{instance.name}_{datetime.datetime.now()}{splitext(filename)[1]}'
 
 
 def get_image_path(instance, filename):
-    return f'images/{instance.name}_{instance.pk}{splitext(filename)[1]}'
+    return f'images/{instance.name}_{datetime.datetime.now()}{splitext(filename)[1]}'
 
 
 # Create your models here.
@@ -42,7 +43,11 @@ class ResultsModel(models.Model):
         ('SecondPm', '2 регламент ПМ'),
         ('Teams', 'Пары'),
         ('Teams', 'Пары микс'),
-        ('Teams', 'Тройки')
+        ('Teams', 'Тройки'),
+        ('Teams', 'Тройки микс'),
+        ('Teams', 'Пятерки'),
+        ('spb_championship', 'Чемпионат СПБ'),
+        ('spb_cup', 'Кубок СПБ'),
     )
     CHOICE_FORMAT = (
         ('rating', 'Рейтинговый'),
@@ -55,6 +60,12 @@ class ResultsModel(models.Model):
     short_form = models.CharField(max_length=100, verbose_name='Короткая форма названия')
     type = models.CharField(max_length=100, verbose_name='Тип турнира', choices=CHOICE)
     format = models.CharField(max_length=50, verbose_name='Формат', choices=CHOICE_FORMAT)
+
+    def __str__(self):
+        return self.tournament_name
+
+    class Meta:
+        ordering = ['-date']
 
 
 class StatisticModel(models.Model):
@@ -88,6 +99,9 @@ class DocumentModel(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название документа')
     document = models.FileField(upload_to=get_document_path, verbose_name='Документ')
     archive = models.BooleanField(default=False, verbose_name='Архив')
+
+    def __str__(self):
+        return self.name
 
 
 class CalendarModel(models.Model):
@@ -151,18 +165,18 @@ class ReportsModel(models.Model):
 
 
 class NewsDocumentsModel(models.Model):
-    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_documents',
+    news = models.ForeignKey(NewsModel, on_delete=models.CASCADE, verbose_name='Новость', related_name='news_documents',
                              blank=True, null=True)
-    report = models.ForeignKey(ReportsModel, on_delete=models.PROTECT, verbose_name='Отчет',
+    report = models.ForeignKey(ReportsModel, on_delete=models.CASCADE, verbose_name='Отчет',
                                related_name='report_documents', blank=True, null=True)
     name = models.CharField(max_length=100, verbose_name='Название документа')
     document = models.FileField(upload_to=get_document_path, verbose_name='Документ')
 
 
 class ImagesModel(models.Model):
-    news = models.ForeignKey(NewsModel, on_delete=models.PROTECT, verbose_name='Новость', related_name='news_images',
+    news = models.ForeignKey(NewsModel, on_delete=models.CASCADE, verbose_name='Новость', related_name='news_images',
                              blank=True, null=True)
-    report = models.ForeignKey(ReportsModel, on_delete=models.PROTECT, verbose_name='Отчет',
+    report = models.ForeignKey(ReportsModel, on_delete=models.CASCADE, verbose_name='Отчет',
                                related_name='report_images', blank=True, null=True)
     name = models.CharField(max_length=100, verbose_name='Название изображения')
     image = models.ImageField(upload_to=get_image_path, verbose_name='Изображение')
