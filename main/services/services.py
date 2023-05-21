@@ -132,7 +132,7 @@ class Player:
             defaults={'rang': player['rang'], 'sex': sex}
         )
 
-        if not created:
+        if not created and player['rang']:
             player_obj.rang = player['rang']
             player_obj.save()
 
@@ -152,6 +152,46 @@ class Rating:
         elif tournament_type == 'Teams':
             Rating.upload_rating_teams('man', year, tournament)
             Rating.upload_rating_teams('woman', year, tournament)
+        elif tournament_type == 'finals_a_b':
+            Rating.upload_finals_a_b('man', models.FinalsAB, year, tournament)
+            Rating.upload_finals_a_b('woman', models.FinalsAB, year, tournament)
+
+    @staticmethod
+    def upload_finals_a_b(sex, model, year, tournament):
+        def get_rating(sex, place):
+            if sex == 'man':
+                if 10 <= place <= 16:
+                    return 1
+                if place == 9:
+                    return 2
+                if 4 <= place <= 8:
+                    return 3
+                if place == 3:
+                    return 4
+                if place == 2:
+                    return 5
+                if place == 1:
+                    return 6
+            else:
+                if 4 <= place <= 8:
+                    return 1
+                if place == 3:
+                    return 2
+                if place == 2:
+                    return 3
+                if place == 1:
+                    return 4
+
+        players = model.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
+
+        for player in players:
+            rating = get_rating(sex, player.place)
+            models.RatingModel.objects.create(
+                player_id=player.player_id,
+                year=year,
+                tournament=tournament,
+                rating=rating
+            )
 
     @staticmethod
     def upload_rating_pm(sex, model, year: models.YearModel, tournament: models.ResultsModel):

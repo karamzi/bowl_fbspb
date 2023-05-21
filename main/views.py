@@ -17,7 +17,8 @@ import datetime
 MODELS_TYPES = {
     'FirstPm': models.FirstPmModel,
     'SecondPm': models.SecondPmModel,
-    'Teams': models.TeamsModel
+    'Teams': models.TeamsModel,
+    'finals_a_b': models.FinalsAB
 }
 
 
