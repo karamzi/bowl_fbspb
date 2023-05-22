@@ -80,7 +80,7 @@ class StatisticModel(models.Model):
     sum = models.IntegerField(verbose_name='Общая сумма')
 
     class Meta:
-        ordering = ['-sum']
+        ordering = ['-avg']
 
 
 class RatingModel(models.Model):
