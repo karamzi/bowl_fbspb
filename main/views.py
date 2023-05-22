@@ -267,7 +267,7 @@ def rating(request):
     year = int(request.GET.get('year', years[0]))
     year = year if year in years else years[0]
 
-    all_tournaments = models.ResultsModel.objects.filter(year__year=year)
+    all_tournaments = models.ResultsModel.objects.filter(year__year=year).order_by('date')
 
     columns = [item.short_form for item in all_tournaments]
     columns.insert(0, 'Спортсмен')
