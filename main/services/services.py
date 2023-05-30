@@ -153,11 +153,14 @@ class Rating:
             Rating.upload_rating_teams('man', year, tournament)
             Rating.upload_rating_teams('woman', year, tournament)
         elif tournament_type == 'finals_a_b':
-            Rating.upload_finals_a_b('man', models.FinalsAB, year, tournament)
-            Rating.upload_finals_a_b('woman', models.FinalsAB, year, tournament)
+            Rating.upload_finals_a_b('man', year, tournament)
+            Rating.upload_finals_a_b('woman', year, tournament)
+        elif tournament_type == 'spb_cup':
+            Rating.upload_spb_cup('man', year, tournament)
+            Rating.upload_spb_cup('woman', year, tournament)
 
     @staticmethod
-    def upload_finals_a_b(sex, model, year, tournament):
+    def upload_finals_a_b(sex, year, tournament):
         def get_rating(sex, place):
             if sex == 'man':
                 if 10 <= place <= 16:
@@ -182,7 +185,7 @@ class Rating:
                 if place == 1:
                     return 4
 
-        players = model.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
+        players = models.FinalsAB.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
 
         for player in players:
             rating = get_rating(sex, player.place)
@@ -226,6 +229,21 @@ class Rating:
                 ORDER BY sum DESC, game_6 DESC, game_5 DESC, game_4 DESC;
                 '''
         )
+        for player in players:
+            rating = max(max_rating - player.place + 1, 1)
+            models.RatingModel.objects.create(
+                player_id=player.player_id,
+                year=year,
+                tournament=tournament,
+                rating=rating
+            )
+
+    @staticmethod
+    def upload_spb_cup(sex, year: models.YearModel, tournament: models.ResultsModel):
+        max_rating = 35 if sex == 'man' else 15
+
+        players = models.SpbCup.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
+
         for player in players:
             rating = max(max_rating - player.place + 1, 1)
             models.RatingModel.objects.create(

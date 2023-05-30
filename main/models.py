@@ -39,8 +39,8 @@ class PlayerModel(models.Model):
 
 class ResultsModel(models.Model):
     CHOICE = (
-        ('FirstPm', '1 регламент ПМ'),
-        ('SecondPm', '2 регламент ПМ'),
+        ('FirstPm', '1 регламент ПМ (6 игр)'),
+        ('SecondPm', '2 регламент ПМ (12 игр)'),
         ('finals_a_b', 'Финалы А и Б'),
         ('Teams', 'Пары'),
         ('Teams', 'Пары микс'),
@@ -247,3 +247,22 @@ class FinalsAB(TournamentsAbstractModel):
     game_6 = models.SmallIntegerField(verbose_name='Игра 6', null=True)
     game_7 = models.SmallIntegerField(verbose_name='Игра 7', null=True)
     game_8 = models.SmallIntegerField(verbose_name='Игра 8', null=True)
+
+
+class SpbCup(TournamentsAbstractModel):
+    game_1 = models.SmallIntegerField(verbose_name='Игра 1')
+    game_2 = models.SmallIntegerField(verbose_name='Игра 2')
+    game_3 = models.SmallIntegerField(verbose_name='Игра 3')
+    game_4 = models.SmallIntegerField(verbose_name='Игра 4')
+    game_5 = models.SmallIntegerField(verbose_name='Игра 5')
+    game_6 = models.SmallIntegerField(verbose_name='Игра 6')
+    game_7 = models.SmallIntegerField(verbose_name='Игра 7', null=True)
+    game_8 = models.SmallIntegerField(verbose_name='Игра 8', null=True)
+    game_9 = models.SmallIntegerField(verbose_name='Игра 9', null=True)
+    game_10 = models.SmallIntegerField(verbose_name='Игра 10', null=True)
+    game_11 = models.SmallIntegerField(verbose_name='Игра 11', null=True)
+    game_12 = models.SmallIntegerField(verbose_name='Игра 12', null=True)
+    game_13 = models.SmallIntegerField(verbose_name='Игра 13', null=True)
+    game_14 = models.SmallIntegerField(verbose_name='Игра 14', null=True)
+    game_15 = models.SmallIntegerField(verbose_name='Игра 15', null=True)
+    game_16 = models.SmallIntegerField(verbose_name='Игра 16', null=True)
