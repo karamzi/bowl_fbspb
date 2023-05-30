@@ -18,7 +18,8 @@ MODELS_TYPES = {
     'FirstPm': models.FirstPmModel,
     'SecondPm': models.SecondPmModel,
     'Teams': models.TeamsModel,
-    'finals_a_b': models.FinalsAB
+    'finals_a_b': models.FinalsAB,
+    'spb_cup': models.SpbCup
 }
 
 
