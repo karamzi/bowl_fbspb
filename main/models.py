@@ -93,7 +93,8 @@ class RatingModel(models.Model):
 class DocumentModel(models.Model):
     TYPE_CHOICE = (
         ('regulation', 'Регламент'),
-        ('rang_report', 'Приказ о присвоении')
+        ('rang_report', 'Приказ о присвоении'),
+        ('rating', 'Рейтинг')
     )
     type = models.CharField(max_length=100, choices=TYPE_CHOICE, verbose_name='Тип документа')
     year = models.ForeignKey(YearModel, on_delete=models.PROTECT, verbose_name='Год', related_name='regulations')
@@ -266,3 +267,27 @@ class SpbCup(TournamentsAbstractModel):
     game_14 = models.SmallIntegerField(verbose_name='Игра 14', null=True)
     game_15 = models.SmallIntegerField(verbose_name='Игра 15', null=True)
     game_16 = models.SmallIntegerField(verbose_name='Игра 16', null=True)
+
+
+class SpbChampionship(TournamentsAbstractModel):
+    game_1 = models.SmallIntegerField(verbose_name='Игра 1')
+    game_2 = models.SmallIntegerField(verbose_name='Игра 2')
+    game_3 = models.SmallIntegerField(verbose_name='Игра 3')
+    game_4 = models.SmallIntegerField(verbose_name='Игра 4')
+    game_5 = models.SmallIntegerField(verbose_name='Игра 5')
+    game_6 = models.SmallIntegerField(verbose_name='Игра 6')
+    game_7 = models.SmallIntegerField(verbose_name='Игра 7', null=True)
+    game_8 = models.SmallIntegerField(verbose_name='Игра 8', null=True)
+    game_9 = models.SmallIntegerField(verbose_name='Игра 9', null=True)
+    game_10 = models.SmallIntegerField(verbose_name='Игра 10', null=True)
+    game_11 = models.SmallIntegerField(verbose_name='Игра 11', null=True)
+    game_12 = models.SmallIntegerField(verbose_name='Игра 12', null=True)
+    game_13 = models.SmallIntegerField(verbose_name='Игра 13', null=True)
+    game_14 = models.SmallIntegerField(verbose_name='Игра 14', null=True)
+    game_15 = models.SmallIntegerField(verbose_name='Игра 15', null=True)
+    game_16 = models.SmallIntegerField(verbose_name='Игра 16', null=True)
+    game_17 = models.SmallIntegerField(verbose_name='Игра 15', null=True)
+    game_18 = models.SmallIntegerField(verbose_name='Игра 16', null=True)
+    game_19 = models.SmallIntegerField(verbose_name='Игра 16', null=True)
+    game_20 = models.SmallIntegerField(verbose_name='Игра 15', null=True)
+    game_21 = models.SmallIntegerField(verbose_name='Игра 16', null=True)

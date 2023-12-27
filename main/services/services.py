@@ -158,6 +158,9 @@ class Rating:
         elif tournament_type == 'spb_cup':
             Rating.upload_spb_cup('man', year, tournament)
             Rating.upload_spb_cup('woman', year, tournament)
+        elif tournament_type == 'spb_championship':
+            Rating.upload_spb_championship('man', year, tournament)
+            Rating.upload_spb_championship('woman', year, tournament)
 
     @staticmethod
     def upload_finals_a_b(sex, year, tournament):
@@ -213,7 +216,7 @@ class Rating:
 
     @staticmethod
     def upload_rating_teams(sex, year: models.YearModel, tournament: models.ResultsModel):
-        max_rating = 35 if sex == 'man' else 15
+        max_rating = 25 if sex == 'man' else 10
 
         players = models.TeamsModel.objects.raw(
             f'''
@@ -243,6 +246,21 @@ class Rating:
         max_rating = 35 if sex == 'man' else 15
 
         players = models.SpbCup.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
+
+        for player in players:
+            rating = max(max_rating - player.place + 1, 1)
+            models.RatingModel.objects.create(
+                player_id=player.player_id,
+                year=year,
+                tournament=tournament,
+                rating=rating
+            )
+
+    @staticmethod
+    def upload_spb_championship(sex, year: models.YearModel, tournament: models.ResultsModel):
+        max_rating = 35 if sex == 'man' else 15
+
+        players = models.SpbChampionship.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
 
         for player in players:
             rating = max(max_rating - player.place + 1, 1)

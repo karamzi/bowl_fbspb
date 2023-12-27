@@ -19,7 +19,8 @@ MODELS_TYPES = {
     'SecondPm': models.SecondPmModel,
     'Teams': models.TeamsModel,
     'finals_a_b': models.FinalsAB,
-    'spb_cup': models.SpbCup
+    'spb_cup': models.SpbCup,
+    'spb_championship': models.SpbChampionship
 }
 
 
@@ -144,6 +145,10 @@ def protocols(request):
 
 def calendar(request):
     return render(request, 'calendar.html')
+
+
+def anti_doping(request):
+    return render(request, 'antidoping.html')
 
 
 def regulations(request):
@@ -316,11 +321,17 @@ def rating(request):
     sorted_man_players = [[players[player.name][column] for column in columns] for player in man]
     sorted_woman_players = [[players[player.name][column] for column in columns] for player in woman]
 
+    try:
+        rating_docs = models.DocumentModel.objects.get(type='rating', year__year=year)
+    except ObjectDoesNotExist:
+        rating_docs = None
+
     context = {
         'years': years,
         'columns': columns,
         'man': sorted_man_players,
-        'woman': sorted_woman_players
+        'woman': sorted_woman_players,
+        'rating_docs': rating_docs
     }
     return render(request, 'rating.html', context)
 

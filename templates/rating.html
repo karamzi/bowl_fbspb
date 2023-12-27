@@ -23,11 +23,11 @@
                         {% endfor %}
                     </div>
                     <div class="rating">
-                        {#                        <div class="rating_button">#}
-                        {#                            {% if year.rating %}#}
-                        {#                                <a href="{{ year.rating.url }}" target="_blank">Весь рейтинг PDF</a>#}
-                        {#                            {% endif %}#}
-                        {#                        </div>#}
+                        {% if rating_docs %}
+                            <div class="rating_button">
+                                <a href="{{ rating_docs.document.url }}" target="_blank">Весь рейтинг PDF</a>
+                            </div>
+                        {% endif %}
                         <h4>Мужчины</h4>
                         <div class="tournament_result">
                             <table>
