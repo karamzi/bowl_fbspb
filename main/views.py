@@ -246,9 +246,15 @@ def current_tournament(request, pk):
 
 
 def results(request):
-    all_results = models.ResultsModel.objects.all()
+    years = models.YearModel.objects.all()
+    years = [item.year for item in years]
+    year = int(request.GET.get('year', years[0]))
+    year = year if year in years else years[0]
+
+    all_results = models.ResultsModel.objects.filter(year__year=year)
     return render(request, 'results.html', context={
-        'results': all_results
+        'results': all_results,
+        'years': years
     })
 
 
