@@ -347,7 +347,8 @@ def parse_results(request):
     data = json.loads(request.body)
     created_people = []
     tournament = models.ResultsModel.objects.get(pk=data['id'])
-    year = models.YearModel.objects.get(year=2023)
+    year = datetime.datetime.now().year
+    year = models.YearModel.objects.get(year=year)
     model = MODELS_TYPES[data['type']]
 
     with transaction.atomic():
