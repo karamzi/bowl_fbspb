@@ -259,17 +259,19 @@ def results(request):
 
 
 def statistic(request):
-    context = {
-        'years': []
-    }
     years = models.YearModel.objects.all()
-    for year_item in years:
-        year = {
-            'year': year_item.year,
-            'men': models.StatisticModel.objects.filter(year__year=year_item.year, player__sex='man'),
-            'women': models.StatisticModel.objects.filter(year__year=year_item.year, player__sex='woman')
-        }
-        context['years'].append(year)
+    years = [item.year for item in years]
+    year = int(request.GET.get('year', years[0]))
+    year = year if year in years else years[0]
+
+    man = models.StatisticModel.objects.filter(year__year=year, player__sex='man')
+    women = models.StatisticModel.objects.filter(year__year=year, player__sex='woman')
+
+    context = {
+        'years': years,
+        'man': man,
+        'women': women
+    }
     return render(request, 'statistics.html', context)
 
 
