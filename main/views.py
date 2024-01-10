@@ -281,7 +281,7 @@ def rating(request):
     year = int(request.GET.get('year', years[0]))
     year = year if year in years else years[0]
 
-    all_tournaments = models.ResultsModel.objects.filter(year__year=year).order_by('date')
+    all_tournaments = models.ResultsModel.objects.filter(year__year=year, format='rating').order_by('date')
 
     columns = [item.short_form for item in all_tournaments]
     columns.insert(0, 'Спортсмен')
@@ -326,8 +326,8 @@ def rating(request):
                 '''
     )
 
-    sorted_man_players = [[players[player.name][column] for column in columns] for player in man]
-    sorted_woman_players = [[players[player.name][column] for column in columns] for player in woman]
+    sorted_man_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player in man]
+    sorted_woman_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player in woman]
 
     try:
         rating_docs = models.DocumentModel.objects.get(type='rating', year__year=year)
