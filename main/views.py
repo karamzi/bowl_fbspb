@@ -119,6 +119,9 @@ def profile(request, pk):
     all_tournaments = models.ResultsModel.objects.filter(year__year=year).order_by('-date')
 
     for tournament_obj in all_tournaments:
+        if tournament_obj.type == 'no_rating':
+            continue
+
         model = MODELS_TYPES[tournament_obj.type]
         tournament = BaseResult.get_results(player, tournament_obj, model)
         if tournament is not None:
@@ -327,8 +330,10 @@ def rating(request):
                 '''
     )
 
-    sorted_man_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player in man]
-    sorted_woman_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player in woman]
+    sorted_man_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player in
+                          man]
+    sorted_woman_players = [[players[player.name][column] for column in columns if players.get(player.name)] for player
+                            in woman]
 
     try:
         rating_docs = models.DocumentModel.objects.get(type='rating', year__year=year)
