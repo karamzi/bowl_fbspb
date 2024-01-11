@@ -18,7 +18,8 @@ MODELS_TYPES = {
     'FirstPm': models.FirstPmModel,
     'SecondPm': models.SecondPmModel,
     'Teams': models.TeamsModel,
-    'finals_a_b': models.FinalsAB,
+    'finals_a': models.FinalsA,
+    'finals_b': models.FinalsB,
     'spb_cup': models.SpbCup,
     'spb_championship': models.SpbChampionship
 }
@@ -349,8 +350,7 @@ def parse_results(request):
     data = json.loads(request.body)
     created_people = []
     tournament = models.ResultsModel.objects.get(pk=data['id'])
-    year = datetime.datetime.now().year
-    year = models.YearModel.objects.get(year=year)
+    year = tournament.year
     model = MODELS_TYPES[data['type']]
 
     with transaction.atomic():

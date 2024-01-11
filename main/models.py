@@ -41,7 +41,8 @@ class ResultsModel(models.Model):
     CHOICE = (
         ('FirstPm', '1 регламент ПМ (6 игр)'),
         ('SecondPm', '2 регламент ПМ (12 игр)'),
-        ('finals_a_b', 'Финалы А и Б'),
+        ('finals_a', 'Финалы А'),
+        ('finals_b', 'Финалы Б'),
         ('Teams', 'Пары'),
         ('Teams', 'Пары микс'),
         ('Teams', 'Тройки'),
@@ -49,6 +50,7 @@ class ResultsModel(models.Model):
         ('Teams', 'Пятерки'),
         ('spb_championship', 'Чемпионат СПБ'),
         ('spb_cup', 'Кубок СПБ'),
+        ('no_rating', '--------')
     )
     CHOICE_FORMAT = (
         ('rating', 'Рейтинговый'),
@@ -239,7 +241,7 @@ class TeamsModel(TournamentsAbstractModel):
     game_9 = models.SmallIntegerField(verbose_name='Игра 9', null=True)
 
 
-class FinalsAB(TournamentsAbstractModel):
+class FinalsA(TournamentsAbstractModel):
     game_1 = models.SmallIntegerField(verbose_name='Игра 1', null=True)
     game_2 = models.SmallIntegerField(verbose_name='Игра 2', null=True)
     game_3 = models.SmallIntegerField(verbose_name='Игра 3', null=True)
@@ -248,6 +250,18 @@ class FinalsAB(TournamentsAbstractModel):
     game_6 = models.SmallIntegerField(verbose_name='Игра 6', null=True)
     game_7 = models.SmallIntegerField(verbose_name='Игра 7', null=True)
     game_8 = models.SmallIntegerField(verbose_name='Игра 8', null=True)
+
+
+class FinalsB(TournamentsAbstractModel):
+    game_1 = models.SmallIntegerField(verbose_name='Игра 1', null=True)
+    game_2 = models.SmallIntegerField(verbose_name='Игра 2', null=True)
+    game_3 = models.SmallIntegerField(verbose_name='Игра 3', null=True)
+    game_4 = models.SmallIntegerField(verbose_name='Игра 4', null=True)
+    game_5 = models.SmallIntegerField(verbose_name='Игра 5', null=True)
+    game_6 = models.SmallIntegerField(verbose_name='Игра 6', null=True)
+    game_7 = models.SmallIntegerField(verbose_name='Игра 7', null=True)
+    game_8 = models.SmallIntegerField(verbose_name='Игра 8', null=True)
+    game_9 = models.SmallIntegerField(verbose_name='Игра 9', null=True)
 
 
 class SpbCup(TournamentsAbstractModel):

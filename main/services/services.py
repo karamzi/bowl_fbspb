@@ -152,9 +152,12 @@ class Rating:
         elif tournament_type == 'Teams':
             Rating.upload_rating_teams('man', year, tournament)
             Rating.upload_rating_teams('woman', year, tournament)
-        elif tournament_type == 'finals_a_b':
-            Rating.upload_finals_a_b('man', year, tournament)
-            Rating.upload_finals_a_b('woman', year, tournament)
+        elif tournament_type == 'finals_a':
+            Rating.upload_finals_a_b('man', year, tournament, models.FinalsA)
+            Rating.upload_finals_a_b('woman', year, tournament, models.FinalsA)
+        elif tournament_type == 'finals_b':
+            Rating.upload_finals_a_b('man', year, tournament, models.FinalsB)
+            Rating.upload_finals_a_b('woman', year, tournament, models.FinalsB)
         elif tournament_type == 'spb_cup':
             Rating.upload_spb_cup('man', year, tournament)
             Rating.upload_spb_cup('woman', year, tournament)
@@ -163,7 +166,7 @@ class Rating:
             Rating.upload_spb_championship('woman', year, tournament)
 
     @staticmethod
-    def upload_finals_a_b(sex, year, tournament):
+    def upload_finals_a_b(sex, year, tournament, model):
         def get_rating(sex, place):
             if sex == 'man':
                 if 10 <= place <= 16:
@@ -188,7 +191,7 @@ class Rating:
                 if place == 1:
                     return 4
 
-        players = models.FinalsAB.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
+        players = model.objects.filter(tournament=tournament, player__sex=sex).order_by('-place')
 
         for player in players:
             rating = get_rating(sex, player.place)
