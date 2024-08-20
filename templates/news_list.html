@@ -1,7 +1,7 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/news_list_3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news_list_4.css' %}">
 {% endblock %}
 {% block title %}Новости{% endblock %}
 
@@ -19,12 +19,12 @@
                             {% else %}
                                 <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
                             {% endif %}
-                        </div>
-                        <figcaption>
                             <div class="date">
                                 <span class="day">{{ post.date|date:'j' }}</span>
                                 <span class="month_news">{{ post.date|date:'M' }}</span>
                             </div>
+                        </div>
+                        <figcaption>
                             <h3>{{ post.name }}</h3>
                             <p>{{ post.short_description }}</p>
                             <div class="news_footer">

@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style_9.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_10.css' %}">
     <link rel="stylesheet" href="{% static 'css/layouts_3.css' %}">
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <meta name="viewport" content="width=450, initial-scale=0.8">
@@ -88,12 +88,12 @@
                         {% else %}
                             <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
                         {% endif %}
-                    </div>
-                    <figcaption>
                         <div class="date">
                             <span class="day">{{ post.date|date:'j' }}</span>
                             <span class="month_news">{{ post.date|date:'M' }}</span>
                         </div>
+                    </div>
+                    <figcaption>
                         <h3>{{ post.name }}</h3>
                         <p>{{ post.short_description }}</p>
                         <div class="news_footer">
