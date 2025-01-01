@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from main import models
+from main.models import DocumentModel
 from main.services.services import Statistic, Player, Rating, BaseResult
 from main.serializers import CalendarSerializer
 
@@ -148,11 +149,13 @@ def protocols(request):
 
 
 def calendar(request):
-    return render(request, 'calendar.html')
+    calendar_file = DocumentModel.objects.filter(type='calendar').order_by('-id').first()
+    return render(request, 'calendar.html', context={'calendar_file': calendar_file})
 
 
 def anti_doping(request):
-    return render(request, 'antidoping.html')
+    documents = DocumentModel.objects.filter(type='anti_doping').order_by('-id')
+    return render(request, 'antidoping.html', context={'documents': documents})
 
 
 def regulations(request):

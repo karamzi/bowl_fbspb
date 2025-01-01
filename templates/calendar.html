@@ -11,10 +11,13 @@
     <section class="calendar_section">
         <div class="container">
             <div id="root"></div>
-            <div class="document">
-                <img src="{% static 'img/pdf_icon.png' %}" alt="">
-                <a href="{% static 'documents/Календарь сент-дек СПб2024 сайт..pdf' %}" target="_blank">Календарь PDF</a>
-            </div>
+
+            {% if calendar_file %}
+                <div class="document">
+                    <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                    <a href="{{ calendar_file.document.url }}" target="_blank">Календарь PDF</a>
+                </div>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

@@ -15,7 +15,6 @@ def get_image_path(instance, filename):
     return f'images/{instance.name}_{datetime.datetime.now()}{splitext(filename)[1]}'
 
 
-# Create your models here.
 class YearModel(models.Model):
     year = models.IntegerField('Год')
 
@@ -50,7 +49,7 @@ class ResultsModel(models.Model):
         ('Teams', 'Пятерки'),
         ('spb_championship', 'Чемпионат СПБ'),
         ('spb_cup', 'Кубок СПБ'),
-        ('no_rating', '--------')
+        ('no_rating', 'Без рейтинга')
     )
     CHOICE_FORMAT = (
         ('rating', 'Рейтинговый'),
@@ -96,7 +95,9 @@ class DocumentModel(models.Model):
     TYPE_CHOICE = (
         ('regulation', 'Регламент'),
         ('rang_report', 'Приказ о присвоении'),
-        ('rating', 'Рейтинг')
+        ('rating', 'Рейтинг'),
+        ('calendar', 'Календарь'),
+        ('anti_doping', 'Антидопинг')
     )
     type = models.CharField(max_length=100, choices=TYPE_CHOICE, verbose_name='Тип документа')
     year = models.ForeignKey(YearModel, on_delete=models.PROTECT, verbose_name='Год', related_name='regulations')
@@ -106,6 +107,9 @@ class DocumentModel(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['-id']
 
 
 class CalendarModel(models.Model):

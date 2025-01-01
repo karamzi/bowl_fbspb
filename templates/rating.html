@@ -1,7 +1,7 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/statistics_3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/statistics_4.css' %}">
 {% endblock %}
 {% block title %}Рейтинг{% endblock %}
 
@@ -28,7 +28,9 @@
                                 <a href="{{ rating_docs.document.url }}" target="_blank">Весь рейтинг PDF</a>
                             </div>
                         {% endif %}
+
                         <h4>Мужчины</h4>
+
                         <div class="tournament_result">
                             <table>
                                 <thead>
@@ -51,6 +53,7 @@
                         </div>
 
                         <h4>Женщины</h4>
+ 
                         <div class="tournament_result">
                             <table>
                                 <thead>

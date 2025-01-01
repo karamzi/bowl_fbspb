@@ -116,10 +116,11 @@
 }
 
 .tournament_result {
-    overflow-x:auto;
+    overflow-x: auto;
     width: 100%;
     margin-bottom: 30px;
     border: 3px solid #009688;
+    max-height: 700px;
 }
 
 .tournament_result::-webkit-scrollbar {
@@ -150,8 +151,41 @@
 }
 
 .tournament_result th {
+    position: sticky;
+    top: 0;
     padding: 10px 7px;
     white-space: nowrap;
+    z-index: 100;
+}
+
+.tournament_result th:first-child, .tournament_result td:first-child {
+    position: sticky;
+    left: 0;
+    min-width: 32px;
+    max-width: 32px;
+}
+
+.tournament_result th:first-child, .tournament_result th:nth-child(2) {
+    z-index: 102;
+}
+
+.tournament_result td:first-child, .tournament_result td:nth-child(2) {
+    z-index: 101;
+}
+
+.tournament_result th:nth-child(2), .tournament_result td:nth-child(2) {
+    position: sticky;
+    left: 32px;
+}
+
+.tournament_result th:nth-child(2):after, .tournament_result tr td:nth-child(2):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    background-color: black;
 }
 
 .tournament_result td {
@@ -168,6 +202,15 @@
 
 .tournament_result tbody tr:nth-child(2n) {
     background-color: #d5f3e8;
+}
+
+.tournament_result tbody tr td:first-child, .tournament_result tbody tr td:nth-child(2) {
+    background-color: #d5f3e8;
+    border: unset;
+}
+
+.tournament_result tr th {
+    background-color: #009688;;
 }
 
 .tournament_result a {
@@ -193,8 +236,6 @@
 }
 
 @media (max-width: 900px) {
-
-
     .rating_description {
         font-size: 15px;
     }
