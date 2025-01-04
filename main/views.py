@@ -283,7 +283,8 @@ def statistic(request):
 
 
 def rating(request):
-    years = models.YearModel.objects.all()
+    # Рейтинг начали писать только с 2023 года
+    years = models.YearModel.objects.filter(year__gte='2023')
     years = [item.year for item in years]
     year = int(request.GET.get('year', years[0]))
     year = year if year in years else years[0]
