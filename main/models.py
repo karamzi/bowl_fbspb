@@ -97,7 +97,8 @@ class DocumentModel(models.Model):
         ('rang_report', 'Приказ о присвоении'),
         ('rating', 'Рейтинг'),
         ('calendar', 'Календарь'),
-        ('anti_doping', 'Антидопинг')
+        ('anti_doping', 'Антидопинг'),
+        ('protocols', 'Протоколы')
     )
     type = models.CharField(max_length=100, choices=TYPE_CHOICE, verbose_name='Тип документа')
     year = models.ForeignKey(YearModel, on_delete=models.PROTECT, verbose_name='Год', related_name='regulations')

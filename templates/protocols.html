@@ -9,11 +9,16 @@
     <section class="section_protocols">
         <div class="container">
             <h1>Протоколы</h1>
-            <p>2021</p>
-            <a href="#">Протокол Президиума ФБ СПб 20.01.2020</a>
-            <p>2020</p>
-            <a href="#">Протокол Президиума ФБ СПб 19.03.2020</a>
-            <a href="#">Протокол Президиума ФБ СПб 05.09.2020</a>
+        
+        {{ year_to_protocols.items }}
+        
+            {% for year, protocols in year_to_protocols.items %}
+                <p>{{ year }}</p>
+                
+                {% for protocol in protocols %}
+                    <a href="{{ protocol.document.url }}">{{ protocol.name }}</a>
+                {% endfor %}
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

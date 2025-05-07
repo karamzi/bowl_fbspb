@@ -144,8 +144,21 @@ def documents(request):
 
 
 def protocols(request):
-    # TODO проверить протоколы
-    return render(request, 'protocols.html')
+    all_protocols = DocumentModel.objects.filter(type='protocols') \
+        .select_related('year') \
+        .order_by('-id') \
+        .all()
+
+    year_to_protocols = dict()
+    for protocol in all_protocols:
+        year = protocol.year.year
+
+        if year not in year_to_protocols:
+            year_to_protocols[year] = []
+
+        year_to_protocols[year].append(protocol)
+
+    return render(request, 'protocols.html', {'year_to_protocols': year_to_protocols})
 
 
 def calendar(request):
