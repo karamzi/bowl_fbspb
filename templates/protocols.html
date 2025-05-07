@@ -14,7 +14,7 @@
                 <p>{{ year }}</p>
                 
                 {% for protocol in protocols %}
-                    <a href="{{ protocol.document.url }}">{{ protocol.name }}</a>
+                    <a href="{{ protocol.document.url }}" target="_blank">{{ protocol.name }}</a>
                 {% endfor %}
             {% endfor %}
         </div>
