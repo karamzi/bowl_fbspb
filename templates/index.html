@@ -246,7 +246,7 @@
     </div>
 </footer>
 
-<script src="https://hlsbook.net/wp-content/examples/hls.min.js"></script>
+<script async src="{% static 'js/hls.min.js' %}"></script>
 <script>
     if (Hls.isSupported()) {
         let video = document.getElementById('video')
@@ -258,6 +258,6 @@
         });
     }
 </script>
-<script src="{% static 'js/main.js' %}"></script>
+<script async src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
