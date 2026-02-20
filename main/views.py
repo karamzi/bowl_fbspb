@@ -401,6 +401,7 @@ def parse_results(request):
     return JsonResponse(data={'result': created_people}, status=200)
 
 
+@csrf_exempt
 def cx_hub_view(request):
     try:
         print(json.loads(request.body))
