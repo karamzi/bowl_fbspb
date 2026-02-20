@@ -26,6 +26,8 @@ urlpatterns = [
     path('rating/', views.rating, name='rating'),
     path('api/parse_results/', views.parse_results),
     path('api/calendar/', views.CalendarApiView.as_view()),
+
+    path('api/cx_hub_test/', views.cx_hub_view)
 ]
 
 if settings.DEBUG:

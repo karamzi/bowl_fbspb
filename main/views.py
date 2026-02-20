@@ -399,3 +399,22 @@ def parse_results(request):
     Rating.upload_rating(data['type'], year, tournament)
 
     return JsonResponse(data={'result': created_people}, status=200)
+
+
+def cx_hub_view(request):
+    try:
+        print(json.loads(request.body))
+    except Exception as e:
+        print(e)
+
+    try:
+        print(request.GET)
+    except Exception as e:
+        print(e)
+
+    try:
+        print(request.POST)
+    except Exception as e:
+        print(e)
+
+    return JsonResponse(data={}, status=200)
