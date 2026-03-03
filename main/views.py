@@ -404,6 +404,7 @@ def parse_results(request):
 @csrf_exempt
 def cx_hub_view(request):
     try:
+        print(request.body)
         print(json.loads(request.body))
     except Exception as e:
         print(e)
